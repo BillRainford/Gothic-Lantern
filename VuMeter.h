@@ -1,4 +1,5 @@
 // This demo is loosley based on the vumeter demo in the Adafruit Circuit Playground library.
+// See description below for details on changes I made 
 #ifndef VUMETER_H
 #define VUMETER_H
 #include <math.h>
@@ -114,6 +115,7 @@ public:
   ~VUMeter() {}
 
   virtual void loop() {
+    Serial.println("VuMeter Demo:");
     int numPixels = CircuitPlayground.strip.numPixels();
     unsigned long startMillis= millis();  // Start of sample window
     float peakToPeak = 0;   // peak-to-peak level

@@ -31,15 +31,21 @@
 #include "Candle.h"
 #include "VUMeter.h"
 #include "Zapper.h"
+#include "RainbowCycle.h"
+#include "Lamp.h"
+#include "Temperature.h"
 
 // Define the acceleration value that we want to react to as an input
-#define X_THRESHOLD 3
-#define Y_THRESHOLD 3
+#define X_THRESHOLD 4
+#define Y_THRESHOLD 4
 
 // Create an instance of each Demo class.
 Candle candle;
 VUMeter vuMeter;
 Zapper zapper;
+RainbowCycle rainbowCycle;
+Lamp lamp;
+Temperature temperature;
 
 
 // Make a list of all demo class instances and keep track of the currently selected one.
@@ -47,7 +53,10 @@ int currentDemo = 0;
 Demo*  demos[] = {
   &candle,
   &zapper,
-  &vuMeter
+  &vuMeter,
+  &rainbowCycle,
+  &temperature,
+  &lamp
 };
 
 void setup() {
@@ -91,9 +100,9 @@ void loop() {
     CircuitPlayground.clearPixels();
 
     if (xAccel > 5){
-      // Delay 1 second as hitting the lantern sometimes results
+      // Delay 2 seconds as hitting the lantern sometimes results
       // in a few high x acceleration readings and jumps around
-      delay(1000);
+      delay(2000);
     }
     // Increment the current demo (looping back to zero if at end).
     currentDemo += 1;

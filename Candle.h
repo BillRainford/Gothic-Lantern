@@ -75,7 +75,7 @@ public:
     uint8_t b1 = pgm_read_byte(&gamma8[int(b*255.0)]);
     // Set the color of the pixel.
     c.setColor(r1, g1, b1);
-    Serial.print("New Color Value: "); Serial.println(c.toString());
+    //Serial.print("New Color Value: "); Serial.println(c.toString());
   }
 
   // HSV to RGB color space conversion function taken directly from:
@@ -152,7 +152,7 @@ public:
       initialized = true;
     }
 
-    Serial.print("NumPixels: "); Serial.println(numPixels);
+    Serial.println("Candle Demo:");
 
     // First determine the low and high bounds of the flicker hues.
     // These are +/- 10 degrees of the specified target hue and will
@@ -164,7 +164,6 @@ public:
     float t = current/1000.0;
 
     for (int i=0;i<numPixels;i++){
-      Serial.print("Setting led number:"); Serial.println(i);
       // This pixel should be lit, so compute its hue by composing
       // a low frequency / slowly changing sine wave with a high
       // frequency / fast changing cosine wave.  This means the candle will
@@ -193,12 +192,14 @@ public:
       }
       setPixelHSV(pixels[i], h, s, v);
       CircuitPlayground.strip.setPixelColor(i, pixels[i].getR(), pixels[i].getG(), pixels[i].getB());
-      Serial.println(pixels[i].toString());
-      Serial.println(pixels[i].getColor());
-      Serial.print("Red Binary: "); Serial.println(pixels[i].getR(), BIN);
-      Serial.print("Green Binary: "); Serial.println(pixels[i].getG(), BIN);
-      Serial.print("Blue Binary: "); Serial.println(pixels[i].getB(), BIN);
-      Serial.print("Combined Binary: ");Serial.println(pixels[i].getColor(), BIN);
+
+      // Useful Debug Info (uncomment to use it) 
+      //Serial.println(pixels[i].toString());
+      //Serial.println(pixels[i].getColor());
+      //Serial.print("Red Binary: "); Serial.println(pixels[i].getR(), BIN);
+      //Serial.print("Green Binary: "); Serial.println(pixels[i].getG(), BIN);
+      //Serial.print("Blue Binary: "); Serial.println(pixels[i].getB(), BIN);
+      //Serial.print("Combined Binary: ");Serial.println(pixels[i].getColor(), BIN);
     }
       
     // Show all the pixels.

@@ -31,9 +31,10 @@ public:
       // Read the sound sensor and use it to initialize the random number generator.
       randomSeed(CircuitPlayground.soundSensor());
 
+      Serial.println("Zapper Demo:");
+
       initialized = true;
     }
-
     // Loops happen pretty fast and we want the zaps to occur 
     // at random times but not too often
     int zap = random(1000);
@@ -85,7 +86,6 @@ public:
       delay(20);
       // Back to steady state color
       for (int i=0;i<numPixels;i++){
-        Serial.print("Setting led number:"); Serial.println(i);
         pixels[i].setColor(25, 0, 255);  // HSV 246, 100, 100 
         CircuitPlayground.strip.setPixelColor(i, pixels[i].getR(), pixels[i].getG(), pixels[i].getB());
       }
@@ -96,7 +96,6 @@ public:
     else {
       // Display the big light in steady state (purple)
       for (int i=0;i<numPixels;i++){
-        Serial.print("Setting led number:"); Serial.println(i);
         pixels[i].setColor(25, 0, 255);  // HSV 246, 100, 100 
         CircuitPlayground.strip.setPixelColor(i, pixels[i].getR(), pixels[i].getG(), pixels[i].getB());
       }
@@ -105,7 +104,7 @@ public:
   }
 
   virtual void modePress() {
-    // No modes defined for this animation 
+    // No modes defined for this demo
   }
 
 private:
